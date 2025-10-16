@@ -10,8 +10,8 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
-        
-        DB::table('products')->truncate();
+        // Hapus data lama (optional)
+        DB::table('products')->delete();
 
         $products = [
             [
@@ -54,52 +54,12 @@ class ProductSeeder extends Seeder
                 'image_url' => 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb',
                 'is_active' => true,
             ],
-            [
-                'name' => 'Webcam Logitech C920',
-                'description' => 'Full HD 1080p webcam',
-                'price' => 1100000,
-                'stock' => 20,
-                'image_url' => 'https://images.unsplash.com/photo-1629131726692-1accd0c53ce0',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'SSD Samsung 1TB',
-                'description' => 'NVMe M.2 SSD super cepat',
-                'price' => 1500000,
-                'stock' => 40,
-                'image_url' => 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'RAM Corsair 16GB',
-                'description' => 'DDR4 3200MHz RGB',
-                'price' => 900000,
-                'stock' => 35,
-                'image_url' => 'https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Mousepad Gaming XL',
-                'description' => 'Extended gaming mousepad',
-                'price' => 200000,
-                'stock' => 60,
-                'image_url' => 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Mic Blue Yeti',
-                'description' => 'Professional USB microphone',
-                'price' => 2500000,
-                'stock' => 12,
-                'image_url' => 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc',
-                'is_active' => true,
-            ],
         ];
 
         foreach ($products as $product) {
             Product::create($product);
         }
 
-        $this->command->info('Products seeded successfully!');
+        $this->command->info('✅ Products seeded successfully!');
     }
 }
