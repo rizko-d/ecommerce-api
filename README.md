@@ -6,7 +6,7 @@ RESTful API untuk sistem e-commerce dengan fitur autentikasi, manajemen produk, 
 DEMO
 =============================================
 
-Live API: https://ecommerce-api-production-f54e.up.railway.app
+Live API: https://web-production-e35b7.up.railway.app/
 
 =============================================
 FEATURES
@@ -53,7 +53,7 @@ INSTALLATION (LOCAL DEVELOPMENT)
 =============================================
 1. Clone Repository
 
-git clone https://github.com/your-username/ecommerce-api.git
+git clone https://github.com/rizko-d/ecommerce-api.git
 cd ecommerce-api
 
 
@@ -152,7 +152,7 @@ API DOCUMENTATION
 =============================================
 
 Base URL:
-Production: https://ecommerce-api-production-f54e.up.railway.app
+Production: https://web-production-e35b7.up.railway.app/
 Local: http://localhost:8000
 
 Authentication:
