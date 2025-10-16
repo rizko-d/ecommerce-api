@@ -276,38 +276,6 @@ curl -X POST https://your-api-url.railway.app/api/register \
   -d '{"name":"Test","email":"test@example.com","password":"password123"}'
 
 =============================================
-PROJECT STRUCTURE
-=============================================
-
-ecommerce-api/
-├── app/
-│   ├── Http/
-│   │   ├── Controllers/
-│   │   │   └── Api/
-│   │   │       ├── AuthController.php
-│   │   │       ├── ProductController.php
-│   │   │       ├── OrderController.php
-│   │   │       └── WebhookController.php
-│   │   └── Middleware/
-│   │       └── CheckAccessKey.php
-│   ├── Models/
-│   │   ├── User.php
-│   │   ├── Product.php
-│   │   ├── Order.php
-│   │   └── OrderItem.php
-│   └── Services/
-│       └── DokuService.php
-├── database/
-│   ├── migrations/
-│   └── seeders/
-│       └── ProductSeeder.php
-├── routes/
-│   └── api.php
-├── Procfile
-├── nixpacks.toml
-└── README.md
-
-=============================================
 SECURITY FEATURES
 =============================================
 
