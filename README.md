@@ -289,20 +289,6 @@ SECURITY FEATURES
 - Webhook signature validation (DOKU)
 
 =============================================
-ENVIRONMENT VARIABLES REFERENCE
-=============================================
-
-Variable            Description                  Example
---------------------------------------------------------------------------------
-APP_KEY             Application encryption key   base64:xxx...
-APP_URL             Application URL              https://api.example.com
-DB_HOST             Database host                postgres.railway.internal
-DB_DATABASE         Database name                railway
-ACCESS_KEY          Custom API access key        secret-key-123
-DOKU_CLIENT_ID      DOKU client ID              BRN-xxx
-DOKU_SECRET_KEY     DOKU secret key             SK-xxx
-
-=============================================
 AUTHOR
 =============================================
 
