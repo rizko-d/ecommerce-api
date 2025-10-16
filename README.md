@@ -2,15 +2,15 @@
 
 RESTful API untuk sistem e-commerce dengan fitur autentikasi, manajemen produk, checkout, dan integrasi payment gateway DOKU.
 
-================================================================================
+================================================
 DEMO
-================================================================================
+================================================
 
 Live API: https://ecommerce-api-production-f54e.up.railway.app
 
-================================================================================
+================================================
 FEATURES
-================================================================================
+================================================
 
 - User Authentication (Register, Login, Logout) dengan Laravel Sanctum
 - Product Management (CRUD operations)
@@ -22,9 +22,9 @@ FEATURES
 - Database Seeding untuk sample data
 - API Documentation dengan Postman Collection
 
-================================================================================
+================================================
 TECH STACK
-================================================================================
+================================================
 
 Backend:
 - Laravel 12.x
@@ -39,19 +39,18 @@ Deployment:
 Payment Gateway:
 - DOKU Payment Gateway
 
-================================================================================
+================================================
 REQUIREMENTS
-================================================================================
+================================================
 
 - PHP >= 8.2
 - Composer
 - PostgreSQL >= 14
 - Git
 
-================================================================================
+================================================
 INSTALLATION (LOCAL DEVELOPMENT)
-================================================================================
-
+================================================
 1. Clone Repository
 
 git clone https://github.com/your-username/ecommerce-api.git
@@ -95,9 +94,9 @@ php artisan serve
 
 API akan berjalan di: http://localhost:8000
 
-================================================================================
+================================================
 DEPLOYMENT (RAILWAY)
-================================================================================
+================================================
 
 Prerequisites:
 1. GitHub repository
@@ -148,9 +147,9 @@ Deployment Steps:
 6. Seed Production Data:
    railway run php artisan db:seed --class=ProductSeeder
 
-================================================================================
+================================================
 API DOCUMENTATION
-================================================================================
+================================================
 
 Base URL:
 Production: https://ecommerce-api-production-f54e.up.railway.app
@@ -253,9 +252,9 @@ DOKU Payment Notification
 POST /api/webhook/doku
 (Called automatically by DOKU)
 
-================================================================================
+================================================
 TESTING
-================================================================================
+================================================
 
 Testing dengan Postman:
 1. Import Postman collection
@@ -276,9 +275,9 @@ curl -X POST https://your-api-url.railway.app/api/register \
   -H "Content-Type: application/json" \
   -d '{"name":"Test","email":"test@example.com","password":"password123"}'
 
-================================================================================
+================================================
 PROJECT STRUCTURE
-================================================================================
+================================================
 
 ecommerce-api/
 ├── app/
@@ -308,9 +307,9 @@ ecommerce-api/
 ├── nixpacks.toml
 └── README.md
 
-================================================================================
+================================================
 SECURITY FEATURES
-================================================================================
+================================================
 
 - Custom Access Key middleware untuk semua endpoint
 - JWT token authentication dengan Laravel Sanctum
@@ -321,9 +320,9 @@ SECURITY FEATURES
 - HTTPS enforcement di production
 - Webhook signature validation (DOKU)
 
-================================================================================
+================================================
 TROUBLESHOOTING
-================================================================================
+================================================
 
 Database Connection Error:
 php artisan config:clear
@@ -339,9 +338,9 @@ php artisan db:seed
 railway logs
 # Set APP_DEBUG=true (local only)
 
-================================================================================
+================================================
 ENVIRONMENT VARIABLES REFERENCE
-================================================================================
+================================================
 
 Variable            Description                  Example
 --------------------------------------------------------------------------------
@@ -353,19 +352,19 @@ ACCESS_KEY          Custom API access key        secret-key-123
 DOKU_CLIENT_ID      DOKU client ID              BRN-xxx
 DOKU_SECRET_KEY     DOKU secret key             SK-xxx
 
-================================================================================
+================================================
 AUTHOR
-================================================================================
+================================================
 
-GitHub: @your-username
-LinkedIn: Your Name
-Portfolio: your-portfolio.com
+GitHub: @rizko-d
+LinkedIn: Rizko Febri Rachmayadi
+Portfolio: https://portfolio-rizko.vercel.app/
 
-================================================================================
+================================================
 SUPPORT
-================================================================================
+================================================
 
-Email: your-email@example.com
+Email: rizkofebry@gmail.com
 GitHub Issues: https://github.com/your-username/ecommerce-api/issues
 
 Made with ❤️ using Laravel & Railway
