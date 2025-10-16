@@ -289,24 +289,6 @@ SECURITY FEATURES
 - Webhook signature validation (DOKU)
 
 =============================================
-TROUBLESHOOTING
-=============================================
-
-Database Connection Error:
-php artisan config:clear
-php artisan cache:clear
-php artisan tinker
->>> DB::connection()->getPdo();
-
-Migration Error:
-php artisan migrate:fresh --force
-php artisan db:seed
-
-500 Server Error:
-railway logs
-# Set APP_DEBUG=true (local only)
-
-=============================================
 ENVIRONMENT VARIABLES REFERENCE
 =============================================
 
