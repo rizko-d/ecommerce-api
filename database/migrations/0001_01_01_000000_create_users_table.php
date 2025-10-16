@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
             $table->string('api_token', 80)->unique()->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
