@@ -127,7 +127,7 @@ Authorization: Bearer {token}
 
 #### Login
 
-```http
+```bash
   POST /api/login
 ```
 
@@ -138,11 +138,11 @@ Authorization: Bearer {token}
 
 ### PRODUCTS
 #### Get All Products
-```http
+```bash
   GET /api/products?per_page=10
 ```
 #### Get Products by ID 
-```http
+```bash
   GET /api/products/1
 ```
 
@@ -152,7 +152,7 @@ Authorization: Bearer {token}
 
 ### ORDERS
 #### Checkout (Create Order)
-```http
+```bash
   POST /api/checkout
 ```
 | Header |  Description                       |
@@ -162,7 +162,7 @@ Authorization: Bearer {token}
 `Content-Type`  | application/json
 
 ##### body 
-```http
+```bash
 {
   "items": [
     {
@@ -175,7 +175,7 @@ Authorization: Bearer {token}
 ```
 
 #### Generate Payment URL
-```http
+```bash
   POST /api/orders/{orderId}/payment
 ```
 
@@ -185,7 +185,7 @@ Authorization: Bearer {token}
 `Authorization` | Bearer {token}
 
 #### Get Order History
-```http
+```bash
 GET /api/orders/history?per_page=10
 ```
 | Header |  Description                       |
@@ -195,7 +195,7 @@ GET /api/orders/history?per_page=10
 
 #### WEBHOOK
 DOKU Payment Notification
-```http
+```bash
 POST /api/webhook/doku
 ```
 (Called automatically by DOKU)
