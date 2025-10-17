@@ -1,16 +1,16 @@
+
 # E-COMMERCE API - LARAVEL
 
 RESTful API untuk sistem e-commerce dengan fitur autentikasi, manajemen produk, checkout, dan integrasi payment gateway DOKU.
 
-=============================================
-DEMO
-=============================================
+
+
+## Demo
 
 Live API: https://web-production-e35b7.up.railway.app/
 
-=============================================
-FEATURES
-=============================================
+
+## Features
 
 - User Authentication (Register, Login, Logout) dengan Laravel Sanctum
 - Product Management (CRUD operations)
@@ -21,10 +21,7 @@ FEATURES
 - Custom Access Key Middleware untuk security
 - Database Seeding untuk sample data
 - API Documentation dengan Postman Collection
-
-=============================================
-TECH STACK
-=============================================
+## Tech Stack
 
 Backend:
 - Laravel 12.x
@@ -39,189 +36,133 @@ Deployment:
 Payment Gateway:
 - DOKU Payment Gateway
 
-=============================================
-REQUIREMENTS
-=============================================
+
+## REQUIREMENTS
 
 - PHP >= 8.2
 - Composer
 - PostgreSQL >= 14
 - Git
+## Installation ( Local )
 
-=============================================
-INSTALLATION (LOCAL DEVELOPMENT)
-=============================================
 1. Clone Repository
 
+```bash
 git clone https://github.com/rizko-d/ecommerce-api.git
 cd ecommerce-api
-
+```
 
 2. Install Dependencies
-
+```bash
 composer install
-
+```
 
 3. Environment Setup
-
+```bash
 cp .env.example .env
 php artisan key:generate
-
-
+```
 4. Configure Database
-
 Edit .env file:
 
+```bash
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
 DB_DATABASE=ecommerce_local
 DB_USERNAME=postgres
 DB_PASSWORD=your_password
-
+```
 
 5. Run Migrations & Seeders
-
+```bash
 php artisan migrate
 php artisan db:seed
 # Or run both at once
 php artisan migrate:fresh --seed
-
-
+```
 6. Start Development Server
-
+```bash
 php artisan serve
-
+```
 API akan berjalan di: http://localhost:8000
-
-=============================================
-DEPLOYMENT (RAILWAY)
-=============================================
-
-Prerequisites:
-1. GitHub repository
-2. Railway account (https://railway.app)
-3. DOKU Production credentials
-
-Deployment Steps:
-
-1. Push to GitHub:
-   git add .
-   git commit -m "Deploy to Railway"
-   git push origin main
-
-2. Create Railway Project:
-   - Login ke Railway
-   - New Project -> Deploy from GitHub
-   - Select repository -> Deploy
-
-3. Add PostgreSQL Database:
-   - + New -> Database -> Add PostgreSQL
-
-4. Configure Environment Variables:
-
-   APP_NAME=E-commerce API
-   APP_ENV=production
-   APP_KEY=base64:your-generated-key
-   APP_DEBUG=false
-   APP_URL=https://${{RAILWAY_PUBLIC_DOMAIN}}
-   
-   DB_CONNECTION=pgsql
-   DB_HOST=${{Postgres.PGHOST}}
-   DB_PORT=${{Postgres.PGPORT}}
-   DB_DATABASE=${{Postgres.PGDATABASE}}
-   DB_USERNAME=${{Postgres.PGUSER}}
-   DB_PASSWORD=${{Postgres.PGPASSWORD}}
-   
-   LOG_CHANNEL=errorlog
-   CACHE_STORE=file
-   SESSION_DRIVER=file
-   
-   ACCESS_KEY=your-production-access-key
-   DOKU_CLIENT_ID=your-doku-client-id
-   DOKU_SECRET_KEY=your-doku-secret-key
-
-5. Generate Public Domain:
-   Settings -> Networking -> Generate Domain
-
-6. Seed Production Data:
-   railway run php artisan db:seed --class=ProductSeeder
-
-=============================================
-API DOCUMENTATION
-=============================================
+## API Documentation
 
 Base URL:
-Production: https://web-production-e35b7.up.railway.app/
+Production: https://ecommerce-api-production-f54e.up.railway.app
 Local: http://localhost:8000
 
 Authentication:
 Semua endpoint memerlukan header:
-X-Access-Key: your-access-key
-
+```bash
+X-Access-Key = your-access-key
+```
 Endpoint yang memerlukan user authentication juga memerlukan:
+```bash
 Authorization: Bearer {token}
+```
+## EndPoint Testing POSTMAN
 
---------------------------------------------------------------------------------
-ENDPOINTS - AUTHENTICATION
---------------------------------------------------------------------------------
+### AUTHENTICATION
+#### Register
+```http
+  POST /api/register
+```
 
-Register User
-POST /api/register
-Headers:
-  X-Access-Key: your-access-key
-  Content-Type: application/json
-Body:
+| Header |  Description                |
+| :-------- |  :------------------------- |
+| `X-Access-Key` | **Required**. your-access-key | 
+`Content-Type`  | application/json
+
+##### Body 
+```bash 
 {
   "name": "John Doe",
   "email": "john@example.com",
   "password": "password123",
   "phone": "081234567890",
-  "address": "Jakarta Selatan"
+  "address": "Indonesia"
 }
+```
 
-Login
-POST /api/login
-Headers:
-  X-Access-Key: your-access-key
-  Content-Type: application/json
-Body:
-{
-  "email": "john@example.com",
-  "password": "password123"
-}
+#### Login
 
-Logout
-POST /api/logout
-Headers:
-  X-Access-Key: your-access-key
-  Authorization: Bearer {token}
+```http
+  POST /api/login
+```
 
---------------------------------------------------------------------------------
-ENDPOINTS - PRODUCTS
---------------------------------------------------------------------------------
+| Header |  Description                       |
+| :-------- |  :-------------------------------- |
+|  `X-Access-Key`      |  **Required**. your-access-key |
+`Authorization` | Bearer {token}
 
-Get All Products
-GET /api/products?per_page=10
-Headers:
-  X-Access-Key: your-access-key
+### PRODUCTS
+#### Get All Products
+```http
+  GET /api/products?per_page=10
+```
+#### Get Products by ID 
+```http
+  GET /api/products/1
+```
 
-Get Product Detail
-GET /api/products/{id}
-Headers:
-  X-Access-Key: your-access-key
+| Header |  Description                |
+| :-------- |  :------------------------- |
+| `X-Access-Key` | **Required**. your-access-key | 
 
---------------------------------------------------------------------------------
-ENDPOINTS - ORDERS
---------------------------------------------------------------------------------
+### ORDERS
+#### Checkout (Create Order)
+```http
+  POST /api/checkout
+```
+| Header |  Description                       |
+| :-------- |  :-------------------------------- |
+|  `X-Access-Key`      |  **Required**. your-access-key |
+`Authorization` | Bearer {token}
+`Content-Type`  | application/json
 
-Checkout (Create Order)
-POST /api/checkout
-Headers:
-  X-Access-Key: your-access-key
-  Authorization: Bearer {token}
-  Content-Type: application/json
-Body:
+##### body 
+```http
 {
   "items": [
     {
@@ -229,78 +170,50 @@ Body:
       "quantity": 2
     }
   ],
-  "shipping_address": "Jl. Sudirman No. 123, Jakarta"
+  "shipping_address": "Jl. 123, Jakarta"
 }
+```
 
-Generate Payment URL
-POST /api/orders/{orderId}/payment
-Headers:
-  X-Access-Key: your-access-key
-  Authorization: Bearer {token}
+#### Generate Payment URL
+```http
+  POST /api/orders/{orderId}/payment
+```
 
-Get Order History
+| Header |  Description                       |
+| :-------- |  :-------------------------------- |
+|  `X-Access-Key`      |  **Required**. your-access-key |
+`Authorization` | Bearer {token}
+
+#### Get Order History
+```http
 GET /api/orders/history?per_page=10
-Headers:
-  X-Access-Key: your-access-key
-  Authorization: Bearer {token}
+```
+| Header |  Description                       |
+| :-------- |  :-------------------------------- |
+|  `X-Access-Key`      |  **Required**. your-access-key |
+`Authorization` | Bearer {token}
 
---------------------------------------------------------------------------------
-ENDPOINTS - WEBHOOK
---------------------------------------------------------------------------------
-
+#### WEBHOOK
 DOKU Payment Notification
+```http
 POST /api/webhook/doku
+```
 (Called automatically by DOKU)
 
-=============================================
-TESTING
-=============================================
 
-Testing dengan Postman:
-1. Import Postman collection
-2. Set environment variables:
-   - base_url: API base URL
-   - access_key: Your access key
-3. Run collection
+## Authors
 
-Testing dengan cURL:
+- Github [@rizko-d](https://www.github.com/rizko-d)
+- Linkedin [Rizko Febri Rachmayadi](https://www.linkedin.com/in/rizkofebri/)
+- Portfolio [Rizko](https://www.linkedin.com/in/rizkofebri/)
 
-# Test get products
-curl https://your-api-url.railway.app/api/products \
-  -H "X-Access-Key: your-access-key"
 
-# Test register
-curl -X POST https://your-api-url.railway.app/api/register \
-  -H "X-Access-Key: your-access-key" \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Test","email":"test@example.com","password":"password123"}'
 
-=============================================
-SECURITY FEATURES
-=============================================
+## Support
 
-- Custom Access Key middleware untuk semua endpoint
-- JWT token authentication dengan Laravel Sanctum
-- CSRF protection
-- Rate limiting
-- SQL injection protection (Eloquent ORM)
-- XSS protection
-- HTTPS enforcement di production
-- Webhook signature validation (DOKU)
+Email: rizkofebry@gmail.com 
 
-=============================================
-AUTHOR
-=============================================
-
-GitHub: @rizko-d
-LinkedIn: Rizko Febri Rachmayadi
-Portfolio: https://portfolio-rizko.vercel.app/
-
-=============================================
-SUPPORT
-=============================================
-
-Email: rizkofebry@gmail.com
-GitHub Issues: https://github.com/your-username/ecommerce-api/issues
+GitHub Issues: https://github.com/rizko-d/ecommerce-api/issues
 
 Made with ❤️ using Laravel & Railway
+
