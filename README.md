@@ -89,7 +89,8 @@ API akan berjalan di: http://localhost:8000
 ## API Documentation
 
 Base URL:
-Production: https://ecommerce-api-production-f54e.up.railway.app
+Production: https://web-production-e35b7.up.railway.app/
+
 Local: http://localhost:8000
 
 Authentication:
